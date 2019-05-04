@@ -1,6 +1,6 @@
 from enum import Enum
 
-from src.constants.Constants import *
+from functional_spec.src.constants.Constants import *
 
 
 class Commands(Enum):

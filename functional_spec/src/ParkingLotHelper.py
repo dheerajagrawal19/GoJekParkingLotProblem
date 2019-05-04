@@ -1,7 +1,7 @@
 import sys
-from src.ParkingLotImpl import ParkingLotImpl
-from src.models.Car import *
-from src.models.Commands import *
+from functional_spec.src.ParkingLotImpl import ParkingLotImpl
+from functional_spec.src.models.Car import *
+from functional_spec.src.models.Commands import *
 
 class ParkingLotHelper:
     def __init__(self):

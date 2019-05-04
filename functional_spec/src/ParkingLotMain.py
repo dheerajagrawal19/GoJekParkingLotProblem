@@ -1,5 +1,5 @@
 import sys
-from src.ParkingLotHelper import ParkingLotHelper
+from functional_spec.src.ParkingLotHelper import ParkingLotHelper
 
 if __name__ == '__main__':
     plh = ParkingLotHelper()
