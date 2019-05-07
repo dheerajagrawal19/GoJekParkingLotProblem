@@ -1,6 +1,6 @@
 from enum import Enum
 
-from functional_spec.src.constants.Constants import *
+from ..constants.Constants import *
 
 
 class Commands(Enum):
@@ -19,7 +19,7 @@ class Commands(Enum):
 
 def getCommand(cmd):
     cmdKey = getCommandKey(cmd)
-    if cmdKey != -1 :
+    if cmdKey != -1:
         return Commands[cmdKey].value
 
     return -1

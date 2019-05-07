@@ -2,4 +2,5 @@
 # Complete bin/setup so that after it is
 # run, bin/parking_lot can be used to launch
 # it.
-python ../functional_spec/src/ParkingLotMain.py
+#cd ..
+python -m functional_spec.src.ParkingLotMain

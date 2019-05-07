@@ -1,7 +1,8 @@
 import sys
-from functional_spec.src.ParkingLotImpl import ParkingLotImpl
-from functional_spec.src.models.Car import *
-from functional_spec.src.models.Commands import *
+from ParkingLotImpl import ParkingLotImpl
+from models.Car import *
+from models.Commands import *
+
 
 class ParkingLotHelper:
     def __init__(self):
@@ -9,6 +10,9 @@ class ParkingLotHelper:
 
     def operateCommand(self, line):
         try:
+            if len(line) < 1:
+                return
+
             content = line.split()
             command = content[0]
             cmd = getCommand(command)
@@ -22,11 +26,18 @@ class ParkingLotHelper:
                 print("Created a parking lot with " + str(cnt) + " slots")
                 return 1
             elif Commands.LEAVE.value == cmd:
+                if self.parkingLot == 0:
+                    raise AssertionError(
+                        "ParkingLot has not been initialized yet.")
+
                 cnt = int(content[1])
                 self.parkingLot.leaveCar(cnt - 1)
                 print("Slot number " + str(cnt) + " is free")
                 return 1
             elif Commands.PARK.value == cmd:
+                if self.parkingLot == 0:
+                    raise AssertionError(
+                        "ParkingLot has not been initialized yet.")
                 regNo = content[1]
                 colour = content[2]
                 parkingres = self.parkingLot.parkCar(Car(regNo, colour))
@@ -36,14 +47,23 @@ class ParkingLotHelper:
                     print("Sorry, parking lot is full")
                 return 1
             elif Commands.REG_NUMBERS.value == cmd:
+                if self.parkingLot == 0:
+                    raise AssertionError(
+                        "ParkingLot has not been initialized yet.")
                 colour = content[1]
                 self.parkingLot.getRegNumberForColor(colour)
                 return 1
             elif Commands.SLOT_COLOUR.value == cmd:
+                if self.parkingLot == 0:
+                    raise AssertionError(
+                        "ParkingLot has not been initialized yet.")
                 colour = content[1]
                 self.parkingLot.getSlotNumberForColor(colour)
                 return 1
             elif Commands.SLOT_REG.value == cmd:
+                if self.parkingLot == 0:
+                    raise AssertionError(
+                        "ParkingLot has not been initialized yet.")
                 regNo = content[1]
                 parkingres = self.parkingLot.getSlotNumberForReqNumber(regNo)
                 if parkingres != -1:
@@ -58,4 +78,5 @@ class ParkingLotHelper:
                 return -1
         except:
             print("Oops!", sys.exc_info()[0], "occured.")
-
+            type, value, traceback = sys.exc_info()
+            print(type, value, traceback)

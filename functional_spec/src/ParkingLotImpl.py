@@ -1,3 +1,6 @@
+from __future__ import print_function
+
+
 class ParkingLotImpl:
     def __init__(self, cap):
         self.capacity = cap
@@ -5,11 +8,11 @@ class ParkingLotImpl:
         self.parkingLotMap = dict()
         self.freeSlots = []
         for i in range(cap):
-            self.parkingLotMap[i] =  0
+            self.parkingLotMap[i] = 0
             self.freeSlots.append(i)
 
     def parkCar(self, car):
-        if self.availability == 0 :
+        if self.availability == 0:
             return -1
 
         nextAvail = self.freeSlots[0]
@@ -18,7 +21,7 @@ class ParkingLotImpl:
         self.freeSlots.remove(nextAvail)
         return nextAvail + 1
 
-    def leaveCar(self, slotNum) :
+    def leaveCar(self, slotNum):
         self.availability = self.availability + 1
         self.freeSlots.append(slotNum)
         self.parkingLotMap[slotNum] = 0
@@ -29,7 +32,6 @@ class ParkingLotImpl:
             r = self.parkingLotMap[i]
             if r != 0:
                 print(str(i + 1) + "\t" + r.getRegNo() + "\t" + r.getColour())
-
 
     def getRegNumberForColor(self, colour):
         res = []
@@ -49,7 +51,6 @@ class ParkingLotImpl:
 
         self.printNumbers(res)
 
-
     def getSlotNumberForReqNumber(self, regNum):
         res = -1
         for i in range(self.capacity):
@@ -61,7 +62,7 @@ class ParkingLotImpl:
 
     def printNumbers(self, list):
         for i in range(len(list) - 1):
-            print(str(list[i]) + ", ", end ="")
+            print(str(list[i]) + ", ", end=' ')
 
         print(str(list[len(list) - 1]))
 

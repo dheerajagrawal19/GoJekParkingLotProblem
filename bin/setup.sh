@@ -5,4 +5,4 @@
 #
 # After this is run, bin/parking_lot
 # should Just Work.
-chmod +x ../functional_spec/src/ParkingLotMain.py
+# chmod +x /functional_spec/src/ParkingLotMain.py
